@@ -1,0 +1,17 @@
+{
+    "private": true,
+    "scripts": {
+        "prepare": "husky install"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^16.2.4",
+        "@commitlint/config-conventional": "^16.2.4",
+        "husky": "^7.0.4"
+    },
+    "lint-staged": {
+        "*.php": "./vendor/bin/php-cs-fixer fix --config=.php_cs.dist.php"
+    },
+    "dependencies": {
+        "lint-staged": "^12.4.1"
+    }
+}
