@@ -15,10 +15,10 @@ class TransactionServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('laravel-transaction')
+            ->name('transaction')
             ->hasConfigFile()
             // ->hasViews()
-            ->hasMigration('create_laravel-transactions_table')
+            ->hasMigration('create_transactions_table')
             // ->hasCommand(TransactionCommand::class)
         ;
     }

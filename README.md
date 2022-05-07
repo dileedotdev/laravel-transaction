@@ -18,14 +18,14 @@ composer require dinhdjj/laravel-transaction
 You can publish and run the migrations with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-transaction-migrations"
+php artisan vendor:publish --tag="transaction-migrations"
 php artisan migrate
 ```
 
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-transaction-config"
+php artisan vendor:publish --tag="transaction-config"
 ```
 
 This is the contents of the published config file:
@@ -38,7 +38,7 @@ return [
 Optionally, you can publish the views using
 
 ```bash
-php artisan vendor:publish --tag="laravel-transaction-views"
+php artisan vendor:publish --tag="transaction-views"
 ```
 
 ## Usage
