@@ -1,6 +1,3 @@
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
-
 # Give laravel model ability transfer/receive balance
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/dinhdjj/laravel-transaction.svg?style=flat-square)](https://packagist.org/packages/dinhdjj/laravel-transaction)
@@ -9,14 +6,6 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/dinhdjj/laravel-transaction.svg?style=flat-square)](https://packagist.org/packages/dinhdjj/laravel-transaction)
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
-
-## Support us
-
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/laravel-transaction.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/laravel-transaction)
-
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
-
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
 ## Installation
 
@@ -55,8 +44,6 @@ php artisan vendor:publish --tag="laravel-transaction-views"
 ## Usage
 
 ```php
-$transaction = new Dinhdjj\Transaction();
-echo $transaction->echoPhrase('Hello, Dinhdjj!');
 ```
 
 ## Testing
@@ -68,10 +55,6 @@ composer test
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
-
-## Contributing
-
-Please see [CONTRIBUTING](https://github.com/spatie/.github/blob/main/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
