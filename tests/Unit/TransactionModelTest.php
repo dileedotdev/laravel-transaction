@@ -4,7 +4,7 @@ use Dinhdjj\Transaction\Models\Transaction;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-it('has transfer & receiver', function () {
+it('has transfer & receiver', function (): void {
     $transaction = Transaction::factory()->create();
 
     expect($transaction->transferer())->toBeInstanceOf(MorphTo::class);

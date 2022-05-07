@@ -4,7 +4,7 @@ use Dinhdjj\Transaction\Models\Transaction;
 use Dinhdjj\Transaction\Tests\HasTransactionsUser;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
-beforeEach(function () {
+beforeEach(function (): void {
     $this->user = HasTransactionsUser::create();
     $this->transactions = Transaction::factory(2)->create([
         'transferer_id' => $this->user->id,
@@ -12,13 +12,13 @@ beforeEach(function () {
     ]);
 });
 
-it('has transferred transactions', function () {
+it('has transferred transactions', function (): void {
     expect($this->user->transferredTransactions())->toBeInstanceOf(MorphMany::class);
     expect($this->user->transferredTransactions)->toHaveCount(2);
     expect($this->user->transferredTransactions[0])->toBeInstanceOf(Transaction::class);
 });
 
-test('model auto detach transactions on delete', function () {
+test('model auto detach transactions on delete', function (): void {
     $this->user->delete();
 
     expect($this->transactions[0]->refresh()->transferer_id)->toBeNull();
@@ -27,7 +27,7 @@ test('model auto detach transactions on delete', function () {
     expect($this->transactions[1]->refresh()->transferer_type)->toBeNull();
 });
 
-test('model auto delete transactions on delete', function () {
+test('model auto delete transactions on delete', function (): void {
     $this->transactions->each(fn ($transaction) => $transaction->update([
         'receiver_id' => null,
         'receiver_type' => null,

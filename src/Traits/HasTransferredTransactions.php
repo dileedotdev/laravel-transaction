@@ -6,21 +6,20 @@ use Dinhdjj\Transaction\Models\Transaction;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
 /**
- *
- * @property-read \Illuminate\Database\Eloquent\Collection|\Dinhdjj\Transaction\Models\Transaction[] $transferredTransactions
+ * @property \Illuminate\Database\Eloquent\Collection|\Dinhdjj\Transaction\Models\Transaction[] $transferredTransactions
  */
 trait HasTransferredTransactions
 {
-    protected static function bootHasTransferredTransactions()
+    protected static function bootHasTransferredTransactions(): void
     {
-        static::deleting(function ($model) {
+        static::deleting(function ($model): void {
             $isForceDeleting = method_exists($model, 'isForceDeleting') ? $model->isForceDeleting() : true;
-            if (! $isForceDeleting) {
+            if (!$isForceDeleting) {
                 return;
             }
 
-            $model->transferredTransactions->each(function (Transaction $transaction) {
-                if ($transaction->receiver_id === null) {
+            $model->transferredTransactions->each(function (Transaction $transaction): void {
+                if (null === $transaction->receiver_id) {
                     $transaction->delete();
                 }
 
