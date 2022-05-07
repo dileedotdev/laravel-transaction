@@ -4,18 +4,17 @@ namespace Dinhdjj\Transaction\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Cache;
 
 /**
- *
- * @property int|null $transferer_id
- * @property string|null $transferer_type
- * @property int|null $receiver_id
- * @property string|null $receiver_type
- * @property int $amount
- * @property string|null $message
- *
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $transferer
- * @property-read \Illuminate\Database\Eloquent\Model|\Eloquent $receiver
+ * @property int|null                                      $transferer_id
+ * @property string|null                                   $transferer_type
+ * @property int|null                                      $receiver_id
+ * @property string|null                                   $receiver_type
+ * @property int                                           $amount
+ * @property string|null                                   $message
+ * @property \Illuminate\Database\Eloquent\Model|\Eloquent $transferer
+ * @property \Illuminate\Database\Eloquent\Model|\Eloquent $receiver
  */
 class Transaction extends Model
 {
@@ -38,13 +37,13 @@ class Transaction extends Model
     protected static function booted(): void
     {
         static::created(function (self $transaction): void {
-            $transaction->forgetRelatedCaches();
+            // $transaction->forgetRelatedCaches();
         });
         static::updated(function (self $transaction): void {
-            $transaction->forgetRelatedCaches();
+            // $transaction->forgetRelatedCaches();
         });
         static::deleted(function (self $transaction): void {
-            $transaction->forgetRelatedCaches();
+            // $transaction->forgetRelatedCaches();
         });
     }
 
@@ -64,5 +63,12 @@ class Transaction extends Model
     public function receiver()
     {
         return $this->morphTo();
+    }
+
+    /** Forget the related caches */
+    public function forgetRelatedCaches(): void
+    {
+        Cache::forget($this->transferer_type.'.'.$this->transferer_id.'.transferred_balance');
+        Cache::forget($this->receiver_type.'.'.$this->receiver_id.'.received_balance');
     }
 }
