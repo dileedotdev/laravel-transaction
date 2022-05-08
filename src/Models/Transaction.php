@@ -37,13 +37,15 @@ class Transaction extends Model
     protected static function booted(): void
     {
         static::created(function (self $transaction): void {
-            // $transaction->forgetRelatedCaches();
+            $transaction->forgetRelatedCaches();
         });
         static::updated(function (self $transaction): void {
-            // $transaction->forgetRelatedCaches();
+            if ($transaction->isDirty('amount')) {
+                $transaction->forgetRelatedCaches();
+            }
         });
         static::deleted(function (self $transaction): void {
-            // $transaction->forgetRelatedCaches();
+            $transaction->forgetRelatedCaches();
         });
     }
 
