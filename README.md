@@ -44,8 +44,58 @@ php artisan vendor:publish --tag="transaction-views"
 
 ## Usage
 
+In your model you want give it ability transfer/receive balance
+Just uses `Balancable` trait implements `Balancable` interface
+
 ```php
+namespace App\Models\User;
+
+use Dinhdjj\Transaction\Interfaces\Balancable as InterfacesBalancable;
+use Dinhdjj\Transaction\Models\Transaction;
+use Dinhdjj\Transaction\Traits\Balancable;
+
+class User extends Model implements InterfaceBalancable
+{
+    use Balancable;
+
+    protected function onReceiveBalance(Transaction $transaction): void
+    {
+    }
+
+    protected function onTransferBalance(Transaction $transaction): void
+    {
+    }
+}
 ```
+
+To transfer/receiver
+
+```php
+    $user1 = User::find(1);
+    $user2 = User::find(2);
+
+    // If you don't check don't worry it will throws exception
+    if($user1->canTransferBalance(200), $user2->canReceiveBalance(200))
+        $transaction = $user1->transferBalance($user2, 200, 'message');
+
+    $user1->balance // get current balance
+    $user1->transferredBalance 
+    $user1->receivedBalance
+    
+    // get all transferred transactions
+    // It used standard morph many relationship
+    $user1->transferredTransactions 
+    $user1->receivedTransactions()->get()
+
+    // Other
+    $user1->receiveBalanceFromAnonymous(...);
+    // bypass the checking
+    $user1->forceReceiveBalanceFromAnonymous(...);
+    $user1->transferBalanceToAnonymous(...);
+    $user1->forceTransferBalanceToAnonymous(...);
+```
+
+If you want use a part, `BalanceReceivable`, `BalanceTransferable`, `HasTransferredTransactions`, `HasReceivedTransactions` both traits and interfaces will help you
 
 ## Testing
 
