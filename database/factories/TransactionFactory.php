@@ -1,8 +1,9 @@
 <?php
 
-namespace Dinhdjj\Transaction\Tests;
+namespace Dinhdjj\Transaction\Database\Factories;
 
 use Dinhdjj\Transaction\Models\Transaction;
+use Dinhdjj\Transaction\Tests\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class TransactionFactory extends Factory

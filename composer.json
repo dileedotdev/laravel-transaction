@@ -35,13 +35,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Dinhdjj\\Transaction\\": "src",
-            "Dinhdjj\\Transaction\\Database\\Factories\\": "database/factories"
+            "Dinhdjj\\Transaction\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Dinhdjj\\Transaction\\Tests\\": "tests"
+            "Dinhdjj\\Transaction\\Tests\\": "tests",
+            "Dinhdjj\\Transaction\\Database\\Factories\\": "database/factories"
         }
     },
     "scripts": {
